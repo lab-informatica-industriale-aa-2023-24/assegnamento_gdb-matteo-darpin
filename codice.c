@@ -18,20 +18,9 @@ void estrai_dati(int ac, char** av, int* vett, int* lung) {
 		vett[i] = atoi(av[i + 1]);
 }
 
-//es: vett[2] = 4
-// posizione = 1
-//
-//posizione = posizione array dati ordinati a cui sono arrivato
-//e nella quale ho nuovo dato < del dato già presente
-//
-//vett = vettore dati ordinati
-//
-//lung = il numero corrispondente alla posizione nell'array
-//dei nuovi dati da inserire
-
 void fai_spazio(int posizione, int* vett, int lung) {
-	for (int j = lung - 1; j > posizione; ++j)
-		vett[j] = vett[j - 1];
+	for (int j = lung - 1; j >= posizione; --j)
+		vett[j + 1] = vett[j];
 }
 
 void inserisci(int nuovo_dato, int num_dati_ord, int* vett) {
