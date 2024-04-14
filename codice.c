@@ -9,30 +9,29 @@
 #define MAX_INPUT 10
 
 void estrai_dati(int ac, char** av, int* vett, int* lung) {
-	*lung = ac - 1; //ac contiene anche il nome del file
+	*lung = ac - 1; 							//ac contiene anche il nome del file
 
-	//converte i numeri inseriti da linea di comando
-	//(stringhe) in interi e li salva nel vettore
-	//appositamente creato
+												//converte i numeri inseriti da linea di comando
+												//(stringhe) in interi e li salva nel vettore
+												//appositamente creato
 	for (int i = 0; i < *lung; ++i)
 		vett[i] = atoi(av[i + 1]);
 }
 
 void fai_spazio(int posizione, int* vett, int lung) {
-	for (int j = lung - 1; j >= posizione; --j)
+	for (int j = lung - 1; j >= posizione; --j)	//algoritmo di ordinazione "insertion sort"
 		vett[j + 1] = vett[j];
 }
 
 void inserisci(int nuovo_dato, int num_dati_ord, int* vett) {
-	if (num_dati_ord == 0) { // il vettore è vuoto, facile
+	if (num_dati_ord == 0) { 					// il vettore è vuoto, facile
 		vett[0] = nuovo_dato;
 		return;
 	}
 
 	for (int i = 0; i < num_dati_ord; ++i) {
-		if (nuovo_dato < vett[i]) {
-			// sposta da vett[i] in poi di un posto sulla destra
-			// prima di inserire il nuovo_dato
+		if (nuovo_dato < vett[i]) { 			// sposta da vett[i] in poi di un posto sulla destra
+												// prima di inserire il nuovo_dato
 			fai_spazio(i, vett, num_dati_ord);
 			vett[i] = nuovo_dato;
 			return;
@@ -53,8 +52,7 @@ void stampa_vettore(const int* vett, int lung) {
 	printf("\n");
 }
 
-// argc = numero argomenti, argv = vettore puntatori
-int main(int argc, char** argv) {
+int main(int argc, char** argv) {				// argc = numero argomenti, argv = vettore puntatori
 	if (argc > MAX_INPUT + 1) {
 		printf("Numero massimo di input %d\n", MAX_INPUT);
 		return -1;
@@ -65,9 +63,9 @@ int main(int argc, char** argv) {
 
 	estrai_dati(argc, argv, dati_input, &num_dati);
 
-	int n_dati = sizeof(dati_input) / sizeof(dati_ordinati[0]);
+	//int n_dati = sizeof(dati_input) / sizeof(dati_ordinati[0]);
 
-	ordina_dati(dati_input, dati_ordinati, n_dati);
+	ordina_dati(dati_input, dati_ordinati, num_dati);
 	stampa_vettore(dati_ordinati, num_dati);
 	return 0;
 }
