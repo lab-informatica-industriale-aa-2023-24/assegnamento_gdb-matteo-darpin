@@ -62,9 +62,6 @@ int main(int argc, char** argv) {				// argc = numero argomenti, argv = vettore 
 	int num_dati = 0;
 
 	estrai_dati(argc, argv, dati_input, &num_dati);
-
-	//int n_dati = sizeof(dati_input) / sizeof(dati_ordinati[0]);
-
 	ordina_dati(dati_input, dati_ordinati, num_dati);
 	stampa_vettore(dati_ordinati, num_dati);
 	return 0;
